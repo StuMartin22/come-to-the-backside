@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+#storeage folder for instructions
+2 delete later/
+
+.DS_Store

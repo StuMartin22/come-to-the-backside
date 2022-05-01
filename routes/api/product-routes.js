@@ -43,9 +43,9 @@ router.post('/', (req, res) => {
       product_name: req.body.product_name,
       price: req.body.price,
       stock: req.body.stock,
-      tagIds: req.body.tag_id,
+      tagIds: req.body.category_id,
     });
-    res.status(200).json(userData);
+    res.status(200).json(products);
   } catch (err) {
     res.status(400).json(err);
   }

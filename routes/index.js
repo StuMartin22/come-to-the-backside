@@ -1,8 +1,5 @@
 const router = require('express').Router();
 const apiRoutes = require('./api');
-const categories = require('./api/category-routes');
-const tags = require('./api/tag-routes');
-const products = require('./api/product-routes');
 
 router.use('/api', apiRoutes);
 

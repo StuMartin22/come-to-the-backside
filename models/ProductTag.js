@@ -21,6 +21,7 @@ ProductTag.init(
         model: Product,
         key: 'id',
       },
+      onDelete: 'CASCADE',
     tag_id : {
       type: DataTypes.INTEGER,
       references: {
@@ -28,6 +29,7 @@ ProductTag.init(
         key: 'id',
       },
     },
+    onDelete: 'CASCADE'
     },
   },
   {

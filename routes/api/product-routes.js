@@ -2,28 +2,24 @@ const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
-const apiRoutes = require('./api/products');
-router.use('/api', apiRoutes);
-
 // get all products
-router.get('/', (req, res) => {
   // find all products
-  router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const products = await Product.findAll();
+    const products = await Product.findAll({include: [{model: Category},{model: Tag}]});
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);
   }
 });
   // be sure to include its associated Category and Tag data
-});
+
 
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
     try {
-    const products = await Product.findByPk(req.params.id);
+    const products = await Product.findByPk(req.params.id, {include: [{model: Category},{model: Tag}]});
     if (!products) {
       res.status(404).json({ message: 'No product with this id!' });
       return;
@@ -37,18 +33,18 @@ router.get('/:id', (req, res) => {
 
 // create new product
 router.post('/', (req, res) => {
-  // router.post('/', async (req, res) => {
-  try {
-    const Product = await Product.create({
-      product_name: req.body.product_name,
-      price: req.body.price,
-      stock: req.body.stock,
-      tagIds: req.body.category_id,
-    });
-    res.status(200).json(products);
-  } catch (err) {
-    res.status(400).json(err);
+product.create(req.body)
+.then(product => {
+  if (req.body.tagIds.length){
+    const productTagArr = req.body.tagIds.map(tagIds=>{
+      return {product_id: product.id, tag_id}
+    })
+    return ProductTag.bulkCreate (productTagArr);
+    res.status(200).json(product)
   }
+})
+.then (productTagIds => res.status(200).json(productTagIds))
+.catch((err) => {res.status(400).json(err)})
 });
   /* req.body should look like this...
     {
@@ -84,7 +80,7 @@ router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
     where: {
-      id: req.params.id,
+      id: req.params.product_id,
     },
   })
     .then((product) => {

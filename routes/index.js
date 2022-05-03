@@ -1,3 +1,4 @@
+//setting requirements for routes and their usage.
 const router = require('express').Router();
 const apiRoutes = require('./api');
 

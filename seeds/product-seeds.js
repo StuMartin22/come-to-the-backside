@@ -1,5 +1,5 @@
 const { Product } = require('../models');
-
+//seed / column into for products
 const productData = [
   {
     product_name: 'Plain T-Shirt',

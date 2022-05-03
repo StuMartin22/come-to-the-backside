@@ -8,3 +8,5 @@ router.use('/products', productRoutes);
 router.use('/tags', tagRoutes);
 
 module.exports = router;
+
+// page is all setting up requirements and routes associated with them / other pages.

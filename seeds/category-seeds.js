@@ -1,5 +1,5 @@
 const { Category } = require('../models');
-
+//setting columns for categoryseeds
 const categoryData = [
   {
     category_name: 'Shirts',

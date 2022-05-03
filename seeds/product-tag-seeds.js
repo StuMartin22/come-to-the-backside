@@ -1,5 +1,5 @@
 const { ProductTag } = require('../models');
-
+//associating tag ids with product ids
 const productTagData = [
   {
     product_id: 1,

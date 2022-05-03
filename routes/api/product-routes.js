@@ -55,22 +55,12 @@ router.post('/', (req, res) => {
     });
   });
 
-  /* req.body should look like this...
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
-    }
-  */
-
-
-// update product
+  // update product
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
     where: {
-      id: req.params.product_id,
+      id: req.params.id,
     },
   })
     .then((product) => {
@@ -100,12 +90,21 @@ router.put('/:id', (req, res) => {
         ProductTag.bulkCreate(newProductTags),
       ]);
     })
-    .then((updatedProductTags) => res.json(updatedProductTags))
+    .then((updatedProductTags) => {console.log(res.status(200).json(updatedProductTags))})
     .catch((err) => {
       // console.log(err);
       res.status(400).json(err);
     });
 });
+
+  /* req.body should look like this...
+    {
+      product_name: "Basketball",
+      price: 200.00,
+      stock: 3,
+      tagIds: [1, 2, 3, 4]
+    }
+  */
 
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value

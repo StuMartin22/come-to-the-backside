@@ -53,7 +53,7 @@
   <h1 align="center" id="images">Images and Videos</h1>
   
   
-  <a href="VIDEOURLGOESHERE">This will show you a walk-through video!</a>
+  <a href="https://drive.google.com/file/d/1rE-RlcIzkujL7kNf-Z_LfThx3jtvDgK4/view">This will show you a walk-through video!</a>
   
   ---
   
